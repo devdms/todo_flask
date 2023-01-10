@@ -4,35 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>To Do App</title>
 </head>
 <body>
-  <div class="container">
-    <h1 class="text-center">To-Do App</h1>
-    <table class="table">
-      <tr>
-        <th>Task</th>
-        <th>Status</th>
-      </tr>
-      {% for task in tasks %}
-        <tr>
-          <td>{{ task.task_name }}</td>
-          <td>{{ task.status }}</td>
-          <td><a href="{{ url_for('mark_task_as_completed', task_id=task.task_id) }}" class="btn btn-success">Mark as completed</a></td>
-        </tr>
-      {% endfor %}
-    </table>
-    <form action="{{ url_for('add_task') }}" method="POST">
-      <div class="form-group">
-        <label for="task_name">Task Name</label>
-        <input type="text" class="form-control" id="task_name" name="task_name" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Add Task</button>
-    </form>
-  </div>
-  <script src="/templates/app.js"></script> 
+    <div class="switch-container">
+        <label class="switch">
+            <input type="checkbox" >
+            <span class="slider round"></span>
+        </label>
+        <p>Dark Mode</p>
+    </div>  
+    <div class="container">
+        <h1 class="text-center">To-Do App</h1>
+        <div class="task-list">
+            <div class="task-list-header">
+                <div class="task-name">Task</div>
+                <div class="task-status">Status</div>
+            </div>
+            {% for task in tasks %}
+            <div class="task-item">
+                <div class="task-name">{{ task.task_name }}</div>
+                <div class="task-status">{{ task.status }}</div>
+                <div class="task-action"><a href="{{ url_for('complete_task', task_id=task[0]) }}" class="btn">Mark as completed</a></div>
+            </div>
+            {% endfor %}
+        </div>
+        <form action="{{ url_for('add_task') }}" method="POST" class="add-task-form">
+            <div class="form-group">
+                <label for="task_name">Task Name</label>
+                <input type="text" class="form-control" id="task_name" name="task_name" required>
+            </div>
+            <button type="submit" class="btn">Add Task</button>
+        </form>
+    </div>
 </body>
+<script>
+  /* JS part */
+    
+  const toggleSwitch =  document.querySelector('.switch input[type="checkbox"]');
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
+    }
+  }
+
+  function switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  toggleSwitch.addEventListener('change', switchTheme, false);
+
+</script>
 </html>

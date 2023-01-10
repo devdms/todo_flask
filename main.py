@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
+static_folder = 'static'
 app=Flask(__name__,template_folder='templates')
 
 # Conecta ao banco de dados
