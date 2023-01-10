@@ -5,21 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <title>To Do App</title>
 </head>
 <body>
-    <h1>To Do List</h1>
-    <form action="/add_task" method="POST">
-      <input type="text" name="task_name" placeholder="Add new task">
-      <input type="submit" value="Add">
-    </form>
-    <table>
-      {% for task in tasks %}
+  <div class="container">
+    <h1 class="text-center">To-Do App</h1>
+    <table class="table">
       <tr>
-        <td>{{ task[1] }}</td>
-        <td><a href="/complete_task/{{ task[0] }}">Mark as completed</a></td>
+        <th>Task</th>
+        <th>Status</th>
       </tr>
+      {% for task in tasks %}
+        <tr>
+          <td>{{ task.task_name }}</td>
+          <td>{{ task.status }}</td>
+          <td><a href="{{ url_for('mark_task_as_completed', task_id=task.task_id) }}" class="btn btn-success">Mark as completed</a></td>
+        </tr>
       {% endfor %}
     </table>
+    <form action="{{ url_for('add_task') }}" method="POST">
+      <div class="form-group">
+        <label for="task_name">Task Name</label>
+        <input type="text" class="form-control" id="task_name" name="task_name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+  </div>
+  <script src="/templates/app.js"></script> 
 </body>
 </html>
