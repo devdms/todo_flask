@@ -42,29 +42,18 @@
 <script>
   /* JS part */
     
-  const toggleSwitch =  document.querySelector('.switch input[type="checkbox"]');
-  const currentTheme = localStorage.getItem('theme');
+  // Quando o switch é clicado, adiciona ou remove a classe "dark-mode" do elemento body
+const toggleSwitch = document.querySelector('.switch input[type="checkbox"]');
+const body = document.querySelector('body');
 
-  if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
+toggleSwitch.addEventListener('change', switchTheme);
 
-    if (currentTheme === 'dark') {
-      toggleSwitch.checked = true;
-    }
+function switchTheme() {
+  if (this.checked) {
+    body.classList.add('dark-mode');
+  } else {
+    body.classList.remove('dark-mode');
   }
-
-  function switchTheme(e) {
-    if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
-  }
-
-  toggleSwitch.addEventListener('change', switchTheme, false);
-
+}
 </script>
 </html>
