@@ -14,6 +14,10 @@ body.dark-mode {
   color: white;
 }
 
+body.dark-mode .container{
+  background-color: #555;
+}
+
 body.dark-mode .slider {
   background-color: #fff;
 }
