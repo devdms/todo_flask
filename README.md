@@ -1,4 +1,4 @@
-# To-Do App
+# App de Tarefas Python e Flask
 
 This is a simple To-Do application created using Flask and SQLite. It allows users to add new tasks to the list and mark tasks as completed.
 
