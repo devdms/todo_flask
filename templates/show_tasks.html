@@ -37,6 +37,11 @@
                 <input type="text" class="form-control" id="task_name" name="task_name" required>
             </div>
             <button type="submit" class="btn">Add Task</button>
+            <div class="export-container">
+                <form action="{{ url_for('export_tasks') }}" method="GET">
+                    <button type="submit" class="btn">Export Tasks</button>
+                </form>
+            </div>
         </form>
     </div>
 </body>

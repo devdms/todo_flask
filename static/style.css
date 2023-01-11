@@ -10,7 +10,7 @@ body {
 }
 
 body.dark-mode {
-  background-color: black;
+  background-color: #2d2b42;
   color: white;
 }
 
@@ -152,7 +152,7 @@ p {
 .task-status {
   flex: 1;
   font-weight: bold;
-  text-align: center;
+  text-align: end;
 }
 
 .task-item {
