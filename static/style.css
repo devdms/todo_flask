@@ -4,7 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: white;
   color: black;
 }
@@ -27,11 +27,11 @@ body.dark-mode p {
 }
 
 body.dark-mode input[type=checkbox]:checked + .slider {
-  background-color: #2196F3;
+  background-color: #555;
   }
   
   body.dark-mode input[type=checkbox]:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #555;
 }
 
 .switch-container {
@@ -82,11 +82,11 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked + .slider {
-  background-color: #2196F3;
+  background-color: #555;
 }
 
 input[type=checkbox]:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #555;
 }
 
 input[type=checkbox]:checked + .slider:before {
@@ -116,7 +116,7 @@ p {
   width: 80%;
   background: #f2f2f2;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .text-center {
@@ -161,6 +161,7 @@ p {
   justify-content: space-between;
   margin-bottom: 10px;
   text-decoration: black;
+  color: black;
 }
 
 .task-action {
@@ -216,7 +217,7 @@ p {
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   }
   
